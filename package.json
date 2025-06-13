@@ -1,6 +1,6 @@
 {
   "name": "@mexty/block",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "React components for MEXT federation modules",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
