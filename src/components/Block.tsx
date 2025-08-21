@@ -12,6 +12,8 @@ export interface BlockProps {
   style?: React.CSSProperties;
   // Enable type checking for props
   validateProps?: boolean;
+  // Data attribute for block identification
+  'data-mexty-id'?: string;
 }
 
 interface BlockPropsSchema {
@@ -39,7 +41,8 @@ const Block: React.FC<BlockProps> = ({
   fallback,
   className,
   style,
-  validateProps = false
+  validateProps = false,
+  'data-mexty-id': dataMextyId
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -230,6 +233,7 @@ const Block: React.FC<BlockProps> = ({
               <div 
                 ref={mountRef} 
                 style={{ width: '100%', height: '100%' }}
+                data-mexty-id={dataMextyId}
               />
             );
           };
@@ -280,6 +284,7 @@ const Block: React.FC<BlockProps> = ({
       <div 
         className={className} 
         style={{ width: '100%', height: '100%', ...style }}
+        data-mexty-id={dataMextyId}
       >
         {fallback || (
           <div style={{ 
@@ -305,6 +310,7 @@ const Block: React.FC<BlockProps> = ({
       <div 
         className={className} 
         style={{ width: '100%', height: '100%', ...style }}
+        data-mexty-id={dataMextyId}
       >
         <div style={{
           padding: '1rem',
@@ -333,6 +339,7 @@ const Block: React.FC<BlockProps> = ({
       <div 
         className={className} 
         style={{ width: '100%', height: '100%', ...style }}
+        data-mexty-id={dataMextyId}
       >
         <MountedComponent />
       </div>
