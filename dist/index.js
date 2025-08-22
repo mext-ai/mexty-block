@@ -5,89 +5,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var jsxRuntime = require('react/jsx-runtime');
 var react = require('react');
 
-/******************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-/* global Reflect, Promise, SuppressedError, Symbol, Iterator */
-
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-}
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
-    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
-
-typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
-    var e = new Error(message);
-    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
-};
-
 function bind(fn, thisArg) {
   return function wrap() {
     return fn.apply(thisArg, arguments);
@@ -1398,12 +1315,12 @@ const hasStandardBrowserWebWorkerEnv = (() => {
 const origin = hasBrowserEnv && window.location.href || 'http://localhost';
 
 var utils = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    hasBrowserEnv: hasBrowserEnv,
-    hasStandardBrowserEnv: hasStandardBrowserEnv,
-    hasStandardBrowserWebWorkerEnv: hasStandardBrowserWebWorkerEnv,
-    navigator: _navigator,
-    origin: origin
+  __proto__: null,
+  hasBrowserEnv: hasBrowserEnv,
+  hasStandardBrowserEnv: hasStandardBrowserEnv,
+  hasStandardBrowserWebWorkerEnv: hasStandardBrowserWebWorkerEnv,
+  navigator: _navigator,
+  origin: origin
 });
 
 var platform = {
@@ -3817,322 +3734,266 @@ const {
   mergeConfig
 } = axios;
 
-var FederationLoader = /** @class */ (function () {
-    function FederationLoader(serverUrl) {
-        if (serverUrl === void 0) { serverUrl = 'https://api.v2.mext.app'; }
+class FederationLoader {
+    constructor(serverUrl = 'https://api.v2.mext.app') {
         this.cache = {};
         this.loadingPromises = {};
         this.serverUrl = serverUrl;
     }
-    FederationLoader.prototype.setServerUrl = function (url) {
+    setServerUrl(url) {
         this.serverUrl = url;
-    };
+    }
     /**
      * Get block metadata from server
      */
-    FederationLoader.prototype.getBlockMetadata = function (blockId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var url, response, error_1;
-            var _a, _b, _c;
-            return __generator(this, function (_d) {
-                switch (_d.label) {
-                    case 0:
-                        console.log("\uD83D\uDD04 Fetching metadata for block: ".concat(blockId, " from ").concat(this.serverUrl));
-                        _d.label = 1;
-                    case 1:
-                        _d.trys.push([1, 3, , 4]);
-                        url = "".concat(this.serverUrl, "/api/blocks/").concat(blockId);
-                        console.log("\uD83D\uDCE1 Making request to: ".concat(url));
-                        return [4 /*yield*/, axios.get(url)];
-                    case 2:
-                        response = _d.sent();
-                        console.log("\u2705 Block metadata received:", response.data);
-                        return [2 /*return*/, response.data];
-                    case 3:
-                        error_1 = _d.sent();
-                        console.error("\u274C Failed to fetch block metadata for ".concat(blockId, ":"), error_1);
-                        console.error("\u274C Request URL: ".concat(this.serverUrl, "/api/blocks/").concat(blockId));
-                        console.error("\u274C Error details:", {
-                            status: (_a = error_1.response) === null || _a === void 0 ? void 0 : _a.status,
-                            statusText: (_b = error_1.response) === null || _b === void 0 ? void 0 : _b.statusText,
-                            data: (_c = error_1.response) === null || _c === void 0 ? void 0 : _c.data,
-                            message: error_1.message
-                        });
-                        throw new Error("Failed to fetch block metadata: ".concat(error_1.message));
-                    case 4: return [2 /*return*/];
-                }
+    async getBlockMetadata(blockId) {
+        var _a, _b, _c;
+        console.log(`🔄 Fetching metadata for block: ${blockId} from ${this.serverUrl}`);
+        try {
+            const url = `${this.serverUrl}/api/blocks/${blockId}`;
+            console.log(`📡 Making request to: ${url}`);
+            const response = await axios.get(url);
+            console.log(`✅ Block metadata received:`, response.data);
+            return response.data;
+        }
+        catch (error) {
+            console.error(`❌ Failed to fetch block metadata for ${blockId}:`, error);
+            console.error(`❌ Request URL: ${this.serverUrl}/api/blocks/${blockId}`);
+            console.error(`❌ Error details:`, {
+                status: (_a = error.response) === null || _a === void 0 ? void 0 : _a.status,
+                statusText: (_b = error.response) === null || _b === void 0 ? void 0 : _b.statusText,
+                data: (_c = error.response) === null || _c === void 0 ? void 0 : _c.data,
+                message: error.message
             });
-        });
-    };
+            throw new Error(`Failed to fetch block metadata: ${error.message}`);
+        }
+    }
     /**
      * Load federation module dynamically
      */
-    FederationLoader.prototype.loadModule = function (blockId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var cached, module, error_2;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        console.log("\uD83D\uDD04 loadModule called for block: ".concat(blockId));
-                        cached = this.cache[blockId];
-                        if (cached && Date.now() - cached.loadedAt < 5 * 60 * 1000) {
-                            console.log("\uD83D\uDCBE Returning cached module for block: ".concat(blockId));
-                            return [2 /*return*/, cached.component];
-                        }
-                        else if (cached) {
-                            console.log("\u23F0 Cached module expired for block: ".concat(blockId, ", reloading"));
-                        }
-                        else {
-                            console.log("\uD83C\uDD95 No cached module found for block: ".concat(blockId));
-                        }
-                        // Return existing loading promise if already loading
-                        if (blockId in this.loadingPromises) {
-                            console.log("\u23F3 Already loading block: ".concat(blockId, ", returning existing promise"));
-                            return [2 /*return*/, this.loadingPromises[blockId]];
-                        }
-                        console.log("\uD83D\uDE80 Starting fresh load for block: ".concat(blockId));
-                        // Start loading process
-                        this.loadingPromises[blockId] = this._loadModuleInternal(blockId);
-                        _a.label = 1;
-                    case 1:
-                        _a.trys.push([1, 3, 4, 5]);
-                        return [4 /*yield*/, this.loadingPromises[blockId]];
-                    case 2:
-                        module = _a.sent();
-                        console.log("\u2705 loadModule completed for block: ".concat(blockId));
-                        return [2 /*return*/, module];
-                    case 3:
-                        error_2 = _a.sent();
-                        console.error("\u274C loadModule failed for block: ".concat(blockId, ":"), error_2);
-                        throw error_2;
-                    case 4:
-                        console.log("\uD83E\uDDF9 Cleaning up loading promise for block: ".concat(blockId));
-                        delete this.loadingPromises[blockId];
-                        return [7 /*endfinally*/];
-                    case 5: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    FederationLoader.prototype._loadModuleInternal = function (blockId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var metadata, federationUrl, module, error_3;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 4, , 5]);
-                        return [4 /*yield*/, this.getBlockMetadata(blockId)];
-                    case 1:
-                        metadata = _a.sent();
-                        if (!metadata.federationUrl) {
-                            throw new Error("Block ".concat(blockId, " does not have a federation URL"));
-                        }
-                        if (metadata.buildStatus !== 'success') {
-                            throw new Error("Block ".concat(blockId, " build status is ").concat(metadata.buildStatus));
-                        }
-                        federationUrl = metadata.federationUrl.startsWith('http')
-                            ? metadata.federationUrl
-                            : "".concat(this.serverUrl).concat(metadata.federationUrl);
-                        console.log("\uD83D\uDD04 Loading federation module: ".concat(federationUrl));
-                        // Load the federation script
-                        return [4 /*yield*/, this._loadScript(federationUrl)];
-                    case 2:
-                        // Load the federation script
-                        _a.sent();
-                        return [4 /*yield*/, this._extractModule(blockId)];
-                    case 3:
-                        module = _a.sent();
-                        // Cache the loaded module
-                        this.cache[blockId] = {
-                            component: module,
-                            loadedAt: Date.now(),
-                            federationUrl: metadata.federationUrl
-                        };
-                        console.log("\u2705 Successfully loaded federation module: ".concat(blockId));
-                        return [2 /*return*/, module];
-                    case 4:
-                        error_3 = _a.sent();
-                        console.error("\u274C Failed to load federation module ".concat(blockId, ":"), error_3);
-                        throw error_3;
-                    case 5: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    FederationLoader.prototype._loadScript = function (url) {
-        console.log("\uD83D\uDCDC Loading script: ".concat(url));
-        return new Promise(function (resolve, reject) {
+    async loadModule(blockId) {
+        console.log(`🔄 loadModule called for block: ${blockId}`);
+        // Return cached module if available and not too old (5 minutes)
+        const cached = this.cache[blockId];
+        if (cached && Date.now() - cached.loadedAt < 5 * 60 * 1000) {
+            console.log(`💾 Returning cached module for block: ${blockId}`);
+            return cached.component;
+        }
+        else if (cached) {
+            console.log(`⏰ Cached module expired for block: ${blockId}, reloading`);
+        }
+        else {
+            console.log(`🆕 No cached module found for block: ${blockId}`);
+        }
+        // Return existing loading promise if already loading
+        if (blockId in this.loadingPromises) {
+            console.log(`⏳ Already loading block: ${blockId}, returning existing promise`);
+            return this.loadingPromises[blockId];
+        }
+        console.log(`🚀 Starting fresh load for block: ${blockId}`);
+        // Start loading process
+        this.loadingPromises[blockId] = this._loadModuleInternal(blockId);
+        try {
+            const module = await this.loadingPromises[blockId];
+            console.log(`✅ loadModule completed for block: ${blockId}`);
+            return module;
+        }
+        catch (error) {
+            console.error(`❌ loadModule failed for block: ${blockId}:`, error);
+            throw error;
+        }
+        finally {
+            console.log(`🧹 Cleaning up loading promise for block: ${blockId}`);
+            delete this.loadingPromises[blockId];
+        }
+    }
+    async _loadModuleInternal(blockId) {
+        try {
+            // Get block metadata to find federation URL
+            const metadata = await this.getBlockMetadata(blockId);
+            if (!metadata.federationUrl) {
+                throw new Error(`Block ${blockId} does not have a federation URL`);
+            }
+            if (metadata.buildStatus !== 'success') {
+                throw new Error(`Block ${blockId} build status is ${metadata.buildStatus}`);
+            }
+            // Use federation URL as-is if it's already a complete URL, otherwise prefix with server URL
+            const federationUrl = metadata.federationUrl.startsWith('http')
+                ? metadata.federationUrl
+                : `${this.serverUrl}${metadata.federationUrl}`;
+            console.log(`🔄 Loading federation module: ${federationUrl}`);
+            // Load the federation script
+            await this._loadScript(federationUrl);
+            // Try to find the federation container
+            const module = await this._extractModule(blockId);
+            // Cache the loaded module
+            this.cache[blockId] = {
+                component: module,
+                loadedAt: Date.now(),
+                federationUrl: metadata.federationUrl
+            };
+            console.log(`✅ Successfully loaded federation module: ${blockId}`);
+            return module;
+        }
+        catch (error) {
+            console.error(`❌ Failed to load federation module ${blockId}:`, error);
+            throw error;
+        }
+    }
+    _loadScript(url) {
+        console.log(`📜 Loading script: ${url}`);
+        return new Promise((resolve, reject) => {
             // Check if script is already loaded
-            var existingScript = document.querySelector("script[src=\"".concat(url, "\"]"));
+            const existingScript = document.querySelector(`script[src="${url}"]`);
             if (existingScript) {
-                console.log("\u267B\uFE0F Script already loaded: ".concat(url));
+                console.log(`♻️ Script already loaded: ${url}`);
                 resolve();
                 return;
             }
-            console.log("\uD83C\uDD95 Creating new script element for: ".concat(url));
-            var script = document.createElement('script');
+            console.log(`🆕 Creating new script element for: ${url}`);
+            const script = document.createElement('script');
             script.src = url;
             script.async = true;
-            script.onload = function () {
-                console.log("\u2705 Script loaded successfully: ".concat(url));
+            script.onload = () => {
+                console.log(`✅ Script loaded successfully: ${url}`);
                 resolve();
             };
-            script.onerror = function (event) {
-                console.error("\u274C Script failed to load: ".concat(url), event);
-                reject(new Error("Failed to load script: ".concat(url)));
+            script.onerror = (event) => {
+                console.error(`❌ Script failed to load: ${url}`, event);
+                reject(new Error(`Failed to load script: ${url}`));
             };
-            console.log("\u2795 Appending script to document head: ".concat(url));
+            console.log(`➕ Appending script to document head: ${url}`);
             document.head.appendChild(script);
         });
-    };
-    FederationLoader.prototype._extractModule = function (blockId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var possibleNames, _i, possibleNames_1, name_1, container, factory, module, mountFunction, error_4, federationLike;
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        possibleNames = [
-                            blockId,
-                            blockId.replace(/[^a-zA-Z0-9]/g, ''),
-                            "block".concat(blockId.replace(/[^a-zA-Z0-9]/g, '')),
-                            'threescene', // default name from webpack template
-                        ];
-                        console.log("\uD83D\uDD0D Trying federation container names:", possibleNames);
-                        _i = 0, possibleNames_1 = possibleNames;
-                        _b.label = 1;
-                    case 1:
-                        if (!(_i < possibleNames_1.length)) return [3 /*break*/, 6];
-                        name_1 = possibleNames_1[_i];
-                        container = window[name_1];
-                        if (!(container && container.get)) return [3 /*break*/, 5];
-                        console.log("\u2705 Found federation container: ".concat(name_1));
-                        _b.label = 2;
-                    case 2:
-                        _b.trys.push([2, 4, , 5]);
-                        return [4 /*yield*/, container.get('./Block')];
-                    case 3:
-                        factory = _b.sent();
-                        module = factory();
-                        mountFunction = module.mount || ((_a = module.default) === null || _a === void 0 ? void 0 : _a.mount);
-                        if (typeof mountFunction === 'function') {
-                            return [2 /*return*/, module];
-                        }
-                        else {
-                            console.warn("\u26A0\uFE0F Module ".concat(name_1, " does not export a mount function"));
-                        }
-                        return [3 /*break*/, 5];
-                    case 4:
-                        error_4 = _b.sent();
-                        console.warn("\u26A0\uFE0F Failed to get module from container ".concat(name_1, ":"), error_4);
-                        return [3 /*break*/, 5];
-                    case 5:
-                        _i++;
-                        return [3 /*break*/, 1];
-                    case 6:
-                        federationLike = Object.keys(window).filter(function (key) {
-                            var obj = window[key];
-                            return obj && typeof obj === 'object' && 'get' in obj;
-                        });
-                        console.log("\uD83D\uDD0D Available federation containers:", federationLike);
-                        throw new Error("Federation container not found for block ".concat(blockId, ". Tried: ").concat(possibleNames.join(', ')));
+    }
+    async _extractModule(blockId) {
+        var _a;
+        // Try different possible module names
+        const possibleNames = [
+            blockId,
+            blockId.replace(/[^a-zA-Z0-9]/g, ''),
+            `block${blockId.replace(/[^a-zA-Z0-9]/g, '')}`,
+            'threescene', // default name from webpack template
+        ];
+        console.log(`🔍 Trying federation container names:`, possibleNames);
+        for (const name of possibleNames) {
+            const container = window[name];
+            if (container && container.get) {
+                console.log(`✅ Found federation container: ${name}`);
+                try {
+                    const factory = await container.get('./Block');
+                    const module = factory();
+                    // Validate that the module has a mount function
+                    const mountFunction = module.mount || ((_a = module.default) === null || _a === void 0 ? void 0 : _a.mount);
+                    if (typeof mountFunction === 'function') {
+                        return module;
+                    }
+                    else {
+                        console.warn(`⚠️ Module ${name} does not export a mount function`);
+                    }
                 }
-            });
+                catch (error) {
+                    console.warn(`⚠️ Failed to get module from container ${name}:`, error);
+                }
+            }
+        }
+        // Show what's actually available for debugging
+        const federationLike = Object.keys(window).filter(key => {
+            const obj = window[key];
+            return obj && typeof obj === 'object' && 'get' in obj;
         });
-    };
+        console.log(`🔍 Available federation containers:`, federationLike);
+        throw new Error(`Federation container not found for block ${blockId}. Tried: ${possibleNames.join(', ')}`);
+    }
     /**
      * Clear cache for a specific block or all blocks
      */
-    FederationLoader.prototype.clearCache = function (blockId) {
+    clearCache(blockId) {
         if (blockId) {
             delete this.cache[blockId];
         }
         else {
             this.cache = {};
         }
-    };
+    }
     /**
      * Get cache info for debugging
      */
-    FederationLoader.prototype.getCacheInfo = function () {
-        return __assign({}, this.cache);
-    };
-    return FederationLoader;
-}());
+    getCacheInfo() {
+        return Object.assign({}, this.cache);
+    }
+}
 // Global instance
-var federationLoader = new FederationLoader();
+const federationLoader = new FederationLoader();
 
-var Block = function (_a) {
-    var blockId = _a.blockId, blockProps = _a.props, onLoad = _a.onLoad, onError = _a.onError, fallback = _a.fallback, className = _a.className, style = _a.style, _b = _a.validateProps, validateProps = _b === void 0 ? false : _b;
-    var _c = react.useState(true), isLoading = _c[0], setIsLoading = _c[1];
-    var _d = react.useState(null), error = _d[0], setError = _d[1];
-    var _e = react.useState(null), MountedComponent = _e[0], setMountedComponent = _e[1];
-    var _f = react.useState(null), propsSchema = _f[0], setPropsSchema = _f[1];
-    var _g = react.useState(blockProps), validatedProps = _g[0], setValidatedProps = _g[1];
+const Block = ({ blockId, props: blockProps, onLoad, onError, fallback, className, style, validateProps = false, 'data-mexty-id': dataMextyId }) => {
+    const [isLoading, setIsLoading] = react.useState(true);
+    const [error, setError] = react.useState(null);
+    const [MountedComponent, setMountedComponent] = react.useState(null);
+    const [propsSchema, setPropsSchema] = react.useState(null);
+    const [validatedProps, setValidatedProps] = react.useState(blockProps);
     // Validate props against schema
-    var validatePropsAgainstSchema = react.useCallback(function (props, schema) {
+    const validatePropsAgainstSchema = react.useCallback((props, schema) => {
         if (!validateProps || !schema || !props) {
             return props;
         }
-        console.log("\uD83D\uDD0D Validating props for block ".concat(blockId, ":"), props);
-        console.log("\uD83D\uDD0D Against schema:", schema);
-        var validated = {};
-        var warnings = [];
+        console.log(`🔍 Validating props for block ${blockId}:`, props);
+        console.log(`🔍 Against schema:`, schema);
+        const validated = {};
+        const warnings = [];
         // Apply defaults and validate required props
-        Object.entries(schema.properties || {}).forEach(function (_a) {
-            var _b;
-            var propName = _a[0], propDef = _a[1];
-            var propValue = props[propName];
+        Object.entries(schema.properties || {}).forEach(([propName, propDef]) => {
+            var _a;
+            const propValue = props[propName];
             // Check if required prop is missing
-            if (((_b = schema.required) === null || _b === void 0 ? void 0 : _b.includes(propName)) && (propValue === undefined || propValue === null)) {
+            if (((_a = schema.required) === null || _a === void 0 ? void 0 : _a.includes(propName)) && (propValue === undefined || propValue === null)) {
                 if (propDef.default !== undefined) {
                     validated[propName] = propDef.default;
-                    console.log("\uD83D\uDD27 Applied default value for required prop ".concat(propName, ":"), propDef.default);
+                    console.log(`🔧 Applied default value for required prop ${propName}:`, propDef.default);
                 }
                 else {
-                    warnings.push("Required prop \"".concat(propName, "\" is missing"));
+                    warnings.push(`Required prop "${propName}" is missing`);
                 }
             }
             else if (propValue !== undefined) {
                 // Validate prop type (basic validation)
-                var isValidType = validatePropType(propValue, propDef);
+                const isValidType = validatePropType(propValue, propDef);
                 if (isValidType) {
                     validated[propName] = propValue;
                 }
                 else {
-                    warnings.push("Prop \"".concat(propName, "\" has invalid type. Expected ").concat(propDef.type, ", got ").concat(typeof propValue));
+                    warnings.push(`Prop "${propName}" has invalid type. Expected ${propDef.type}, got ${typeof propValue}`);
                     // Use default if available
                     if (propDef.default !== undefined) {
                         validated[propName] = propDef.default;
-                        console.log("\uD83D\uDD27 Used default value for invalid prop ".concat(propName, ":"), propDef.default);
+                        console.log(`🔧 Used default value for invalid prop ${propName}:`, propDef.default);
                     }
                 }
             }
             else if (propDef.default !== undefined) {
                 // Apply default for optional props
                 validated[propName] = propDef.default;
-                console.log("\uD83D\uDD27 Applied default value for optional prop ".concat(propName, ":"), propDef.default);
+                console.log(`🔧 Applied default value for optional prop ${propName}:`, propDef.default);
             }
         });
         // Add additional properties if allowed
         if (schema.additionalProperties !== false) {
-            Object.entries(props).forEach(function (_a) {
-                var _b;
-                var propName = _a[0], propValue = _a[1];
-                if (!((_b = schema.properties) === null || _b === void 0 ? void 0 : _b[propName])) {
+            Object.entries(props).forEach(([propName, propValue]) => {
+                var _a;
+                if (!((_a = schema.properties) === null || _a === void 0 ? void 0 : _a[propName])) {
                     validated[propName] = propValue;
                 }
             });
         }
         if (warnings.length > 0) {
-            console.warn("\u26A0\uFE0F Props validation warnings for block ".concat(blockId, ":"), warnings);
+            console.warn(`⚠️ Props validation warnings for block ${blockId}:`, warnings);
         }
-        console.log("\u2705 Validated props for block ".concat(blockId, ":"), validated);
+        console.log(`✅ Validated props for block ${blockId}:`, validated);
         return validated;
     }, [blockId, validateProps]);
     // Basic type validation helper
-    var validatePropType = function (value, propDef) {
-        var type = propDef.type, enumValues = propDef.enum;
+    const validatePropType = (value, propDef) => {
+        const { type, enum: enumValues } = propDef;
         // Check enum values first
         if (enumValues && Array.isArray(enumValues)) {
             return enumValues.includes(value);
@@ -4154,43 +4015,31 @@ var Block = function (_a) {
         }
     };
     // Fetch props schema when component mounts
-    react.useEffect(function () {
-        var fetchPropsSchema = function () { return __awaiter(void 0, void 0, void 0, function () {
-            var metadata, err_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!validateProps)
-                            return [2 /*return*/];
-                        _a.label = 1;
-                    case 1:
-                        _a.trys.push([1, 3, , 4]);
-                        console.log("\uD83D\uDD0D Fetching props schema for block: ".concat(blockId));
-                        return [4 /*yield*/, federationLoader.getBlockMetadata(blockId)];
-                    case 2:
-                        metadata = _a.sent();
-                        if (metadata === null || metadata === void 0 ? void 0 : metadata.blockProps) {
-                            setPropsSchema(metadata.blockProps);
-                            console.log("\u2705 Props schema loaded for block ".concat(blockId, ":"), metadata.blockProps);
-                        }
-                        else {
-                            console.log("\u2139\uFE0F No props schema found for block ".concat(blockId));
-                        }
-                        return [3 /*break*/, 4];
-                    case 3:
-                        err_1 = _a.sent();
-                        console.warn("\u26A0\uFE0F Failed to fetch props schema for block ".concat(blockId, ":"), err_1.message);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+    react.useEffect(() => {
+        const fetchPropsSchema = async () => {
+            if (!validateProps)
+                return;
+            try {
+                console.log(`🔍 Fetching props schema for block: ${blockId}`);
+                const metadata = await federationLoader.getBlockMetadata(blockId);
+                if (metadata === null || metadata === void 0 ? void 0 : metadata.blockProps) {
+                    setPropsSchema(metadata.blockProps);
+                    console.log(`✅ Props schema loaded for block ${blockId}:`, metadata.blockProps);
                 }
-            });
-        }); };
+                else {
+                    console.log(`ℹ️ No props schema found for block ${blockId}`);
+                }
+            }
+            catch (err) {
+                console.warn(`⚠️ Failed to fetch props schema for block ${blockId}:`, err.message);
+            }
+        };
         fetchPropsSchema();
     }, [blockId, validateProps]);
     // Validate props when they change or schema is loaded
-    react.useEffect(function () {
+    react.useEffect(() => {
         if (propsSchema && blockProps) {
-            var validated = validatePropsAgainstSchema(blockProps, propsSchema);
+            const validated = validatePropsAgainstSchema(blockProps, propsSchema);
             setValidatedProps(validated);
         }
         else {
@@ -4198,121 +4047,96 @@ var Block = function (_a) {
         }
     }, [blockProps, propsSchema, validatePropsAgainstSchema]);
     // Load and create the mounted component
-    react.useEffect(function () {
-        console.log("\uD83D\uDD04 Block useEffect triggered - blockId: ".concat(blockId));
+    react.useEffect(() => {
+        console.log(`🔄 Block useEffect triggered - blockId: ${blockId}`);
         if (!blockId) {
-            console.error("\u274C Block ID is required but got: ".concat(blockId));
+            console.error(`❌ Block ID is required but got: ${blockId}`);
             setError(new Error('Block ID is required'));
             setIsLoading(false);
             return;
         }
-        var loadAndMount = function () { return __awaiter(void 0, void 0, void 0, function () {
-            var maxRetries, baseDelay, _loop_1, attempt, state_1;
+        const loadAndMount = async () => {
             var _a, _b, _c, _d;
-            return __generator(this, function (_e) {
-                switch (_e.label) {
-                    case 0:
-                        setIsLoading(true);
-                        setError(null);
-                        setMountedComponent(null);
-                        maxRetries = 3;
-                        baseDelay = 500;
-                        _loop_1 = function (attempt) {
-                            var module, mountFunction_1, errorMsg, WrapperComponent_1, err_2, isFederationError, delay_1;
-                            return __generator(this, function (_f) {
-                                switch (_f.label) {
-                                    case 0:
-                                        _f.trys.push([0, 2, , 5]);
-                                        console.log("\uD83D\uDD04 Loading federation module: ".concat(blockId, " (attempt ").concat(attempt, "/").concat(maxRetries, ")"));
-                                        return [4 /*yield*/, federationLoader.loadModule(blockId)];
-                                    case 1:
-                                        module = _f.sent();
-                                        console.log("\u2705 Module loaded:", module);
-                                        console.log("\uD83D\uDD0D Module keys:", Object.keys(module || {}));
-                                        mountFunction_1 = module.mount || ((_a = module.default) === null || _a === void 0 ? void 0 : _a.mount);
-                                        console.log("\uD83D\uDD0D Mount function found:", !!mountFunction_1, typeof mountFunction_1);
-                                        if (!mountFunction_1 || typeof mountFunction_1 !== 'function') {
-                                            errorMsg = "Block ".concat(blockId, " does not export a mount function. Available exports: ").concat(Object.keys(module || {}));
-                                            console.error("\u274C ".concat(errorMsg));
-                                            throw new Error(errorMsg);
-                                        }
-                                        WrapperComponent_1 = function () {
-                                            var mountRef = react.useRef(null);
-                                            var _a = react.useState(false), mounted = _a[0], setMounted = _a[1];
-                                            react.useEffect(function () {
-                                                if (mountRef.current && !mounted) {
-                                                    try {
-                                                        console.log("\uD83D\uDD27 Mounting block: ".concat(blockId, " with validated props:"), validatedProps);
-                                                        mountFunction_1(mountRef.current, validatedProps);
-                                                        setMounted(true);
-                                                        console.log("\u2705 Block mounted successfully: ".concat(blockId));
-                                                        onLoad === null || onLoad === void 0 ? void 0 : onLoad();
-                                                    }
-                                                    catch (err) {
-                                                        console.error("\u274C Failed to mount block ".concat(blockId, ":"), err);
-                                                        onError === null || onError === void 0 ? void 0 : onError(err);
-                                                    }
-                                                }
-                                            }, [mounted]);
-                                            return (jsxRuntime.jsx("div", { ref: mountRef, style: { width: '100%', height: '100%' } }));
-                                        };
-                                        setMountedComponent(function () { return WrapperComponent_1; });
-                                        setIsLoading(false);
-                                        console.log("\u2705 Block ".concat(blockId, " loaded successfully on attempt ").concat(attempt));
-                                        return [2 /*return*/, { value: void 0 }];
-                                    case 2:
-                                        err_2 = _f.sent();
-                                        console.error("\u274C Failed to load block ".concat(blockId, " on attempt ").concat(attempt, ":"), err_2);
-                                        isFederationError = ((_b = err_2.message) === null || _b === void 0 ? void 0 : _b.includes('Federation container not found')) ||
-                                            ((_c = err_2.message) === null || _c === void 0 ? void 0 : _c.includes('container not found')) ||
-                                            ((_d = err_2.message) === null || _d === void 0 ? void 0 : _d.includes('is not a function'));
-                                        if (!(isFederationError && attempt < maxRetries)) return [3 /*break*/, 4];
-                                        delay_1 = baseDelay * Math.pow(2, attempt - 1);
-                                        console.log("\u23F3 Retrying block ".concat(blockId, " in ").concat(delay_1, "ms... (attempt ").concat(attempt + 1, "/").concat(maxRetries, ")"));
-                                        return [4 /*yield*/, new Promise(function (resolve) { return setTimeout(resolve, delay_1); })];
-                                    case 3:
-                                        _f.sent();
-                                        return [2 /*return*/, "continue"];
-                                    case 4:
-                                        // If this was the last attempt or not a retryable error, fail
-                                        console.error("\u274C Final failure loading block ".concat(blockId, ":"), err_2);
-                                        console.error("\u274C Error stack:", err_2.stack);
-                                        console.error("\u274C Error details:", {
-                                            name: err_2.name,
-                                            message: err_2.message,
-                                            cause: err_2.cause,
-                                            attempts: attempt
-                                        });
-                                        setError(err_2);
-                                        setIsLoading(false);
-                                        onError === null || onError === void 0 ? void 0 : onError(err_2);
-                                        return [2 /*return*/, { value: void 0 }];
-                                    case 5: return [2 /*return*/];
+            setIsLoading(true);
+            setError(null);
+            setMountedComponent(null);
+            // Retry logic with exponential backoff
+            const maxRetries = 3;
+            const baseDelay = 500; // 500ms base delay
+            for (let attempt = 1; attempt <= maxRetries; attempt++) {
+                try {
+                    console.log(`🔄 Loading federation module: ${blockId} (attempt ${attempt}/${maxRetries})`);
+                    // Load the federation module
+                    const module = await federationLoader.loadModule(blockId);
+                    console.log(`✅ Module loaded:`, module);
+                    console.log(`🔍 Module keys:`, Object.keys(module || {}));
+                    // Get the mount function
+                    const mountFunction = module.mount || ((_a = module.default) === null || _a === void 0 ? void 0 : _a.mount);
+                    console.log(`🔍 Mount function found:`, !!mountFunction, typeof mountFunction);
+                    if (!mountFunction || typeof mountFunction !== 'function') {
+                        const errorMsg = `Block ${blockId} does not export a mount function. Available exports: ${Object.keys(module || {})}`;
+                        console.error(`❌ ${errorMsg}`);
+                        throw new Error(errorMsg);
+                    }
+                    // Create a wrapper component that handles mounting (like FederationTestPage)
+                    const WrapperComponent = () => {
+                        const mountRef = react.useRef(null);
+                        const [mounted, setMounted] = react.useState(false);
+                        react.useEffect(() => {
+                            if (mountRef.current && !mounted) {
+                                try {
+                                    console.log(`🔧 Mounting block: ${blockId} with validated props:`, validatedProps);
+                                    mountFunction(mountRef.current, validatedProps);
+                                    setMounted(true);
+                                    console.log(`✅ Block mounted successfully: ${blockId}`);
+                                    onLoad === null || onLoad === void 0 ? void 0 : onLoad();
                                 }
-                            });
-                        };
-                        attempt = 1;
-                        _e.label = 1;
-                    case 1:
-                        if (!(attempt <= maxRetries)) return [3 /*break*/, 4];
-                        return [5 /*yield**/, _loop_1(attempt)];
-                    case 2:
-                        state_1 = _e.sent();
-                        if (typeof state_1 === "object")
-                            return [2 /*return*/, state_1.value];
-                        _e.label = 3;
-                    case 3:
-                        attempt++;
-                        return [3 /*break*/, 1];
-                    case 4: return [2 /*return*/];
+                                catch (err) {
+                                    console.error(`❌ Failed to mount block ${blockId}:`, err);
+                                    onError === null || onError === void 0 ? void 0 : onError(err);
+                                }
+                            }
+                        }, [mounted]);
+                        return (jsxRuntime.jsx("div", { ref: mountRef, style: { width: '100%', height: '100%' }, "data-mexty-id": dataMextyId }));
+                    };
+                    setMountedComponent(() => WrapperComponent);
+                    setIsLoading(false);
+                    console.log(`✅ Block ${blockId} loaded successfully on attempt ${attempt}`);
+                    return; // Success - exit the retry loop
                 }
-            });
-        }); };
+                catch (err) {
+                    console.error(`❌ Failed to load block ${blockId} on attempt ${attempt}:`, err);
+                    // Check if this is a federation container error that might resolve with retry
+                    const isFederationError = ((_b = err.message) === null || _b === void 0 ? void 0 : _b.includes('Federation container not found')) ||
+                        ((_c = err.message) === null || _c === void 0 ? void 0 : _c.includes('container not found')) ||
+                        ((_d = err.message) === null || _d === void 0 ? void 0 : _d.includes('is not a function'));
+                    if (isFederationError && attempt < maxRetries) {
+                        const delay = baseDelay * Math.pow(2, attempt - 1); // Exponential backoff
+                        console.log(`⏳ Retrying block ${blockId} in ${delay}ms... (attempt ${attempt + 1}/${maxRetries})`);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        continue; // Try again
+                    }
+                    // If this was the last attempt or not a retryable error, fail
+                    console.error(`❌ Final failure loading block ${blockId}:`, err);
+                    console.error(`❌ Error stack:`, err.stack);
+                    console.error(`❌ Error details:`, {
+                        name: err.name,
+                        message: err.message,
+                        cause: err.cause,
+                        attempts: attempt
+                    });
+                    setError(err);
+                    setIsLoading(false);
+                    onError === null || onError === void 0 ? void 0 : onError(err);
+                    return;
+                }
+            }
+        };
         loadAndMount();
     }, [blockId, validatedProps, onLoad, onError]); // Include validatedProps in deps
     // Render loading state
     if (isLoading) {
-        return (jsxRuntime.jsx("div", { className: className, style: __assign({ width: '100%', height: '100%' }, style), children: fallback || (jsxRuntime.jsxs("div", { style: {
+        return (jsxRuntime.jsx("div", { className: className, style: Object.assign({ width: '100%', height: '100%' }, style), "data-mexty-id": dataMextyId, children: fallback || (jsxRuntime.jsxs("div", { style: {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -4324,7 +4148,7 @@ var Block = function (_a) {
     }
     // Render error state
     if (error) {
-        return (jsxRuntime.jsx("div", { className: className, style: __assign({ width: '100%', height: '100%' }, style), children: jsxRuntime.jsxs("div", { style: {
+        return (jsxRuntime.jsx("div", { className: className, style: Object.assign({ width: '100%', height: '100%' }, style), "data-mexty-id": dataMextyId, children: jsxRuntime.jsxs("div", { style: {
                     padding: '1rem',
                     border: '1px solid #fee',
                     borderRadius: '4px',
@@ -4334,248 +4158,154 @@ var Block = function (_a) {
     }
     // Render the mounted component
     if (MountedComponent) {
-        return (jsxRuntime.jsx("div", { className: className, style: __assign({ width: '100%', height: '100%' }, style), children: jsxRuntime.jsx(MountedComponent, {}) }));
+        return (jsxRuntime.jsx("div", { className: className, style: Object.assign({ width: '100%', height: '100%' }, style), "data-mexty-id": dataMextyId, children: jsxRuntime.jsx(MountedComponent, {}) }));
     }
     return null;
 };
 
-var BlockRegistryManager = /** @class */ (function () {
-    function BlockRegistryManager(serverUrl) {
-        if (serverUrl === void 0) { serverUrl = 'https://api.v2.mext.app'; }
+class BlockRegistryManager {
+    constructor(serverUrl = 'https://api.v2.mext.app') {
         this.registry = {};
         this.authorRegistry = {};
         this.lastFetched = 0;
         this.cacheDuration = 5 * 60 * 1000; // 5 minutes
         this.serverUrl = serverUrl;
     }
-    BlockRegistryManager.prototype.setServerUrl = function (url) {
+    setServerUrl(url) {
         this.serverUrl = url;
-    };
+    }
     /**
      * Fetch the latest registry from server
      */
-    BlockRegistryManager.prototype.fetchRegistry = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var response, error_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        console.log('🔄 Fetching block registry from server...');
-                        return [4 /*yield*/, axios.get("".concat(this.serverUrl, "/api/blocks/registry"))];
-                    case 1:
-                        response = _a.sent();
-                        this.registry = response.data.registry || {};
-                        this.authorRegistry = response.data.authorRegistry || {};
-                        this.lastFetched = Date.now();
-                        console.log("\u2705 Block registry loaded with ".concat(Object.keys(this.registry).length, " components and ").concat(Object.keys(this.authorRegistry).length, " authors"));
-                        return [2 /*return*/, { registry: this.registry, authorRegistry: this.authorRegistry }];
-                    case 2:
-                        error_1 = _a.sent();
-                        console.error('❌ Failed to fetch block registry:', error_1.message);
-                        // Return cached registry if available
-                        return [2 /*return*/, { registry: this.registry, authorRegistry: this.authorRegistry }];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
+    async fetchRegistry() {
+        try {
+            console.log('🔄 Fetching block registry from server...');
+            const response = await axios.get(`${this.serverUrl}/api/blocks/registry`);
+            this.registry = response.data.registry || {};
+            this.authorRegistry = response.data.authorRegistry || {};
+            this.lastFetched = Date.now();
+            console.log(`✅ Block registry loaded with ${Object.keys(this.registry).length} components and ${Object.keys(this.authorRegistry).length} authors`);
+            return { registry: this.registry, authorRegistry: this.authorRegistry };
+        }
+        catch (error) {
+            console.error('❌ Failed to fetch block registry:', error.message);
+            // Return cached registry if available
+            return { registry: this.registry, authorRegistry: this.authorRegistry };
+        }
+    }
     /**
      * Get registry, fetching from server if cache is stale
      */
-    BlockRegistryManager.prototype.getRegistry = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var now;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        now = Date.now();
-                        if (!(now - this.lastFetched > this.cacheDuration || Object.keys(this.registry).length === 0)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, this.fetchRegistry()];
-                    case 1:
-                        _a.sent();
-                        _a.label = 2;
-                    case 2: return [2 /*return*/, this.registry];
-                }
-            });
-        });
-    };
+    async getRegistry() {
+        const now = Date.now();
+        // Fetch if cache is stale or empty
+        if (now - this.lastFetched > this.cacheDuration || Object.keys(this.registry).length === 0) {
+            await this.fetchRegistry();
+        }
+        return this.registry;
+    }
     /**
      * Get author registry, fetching from server if cache is stale
      */
-    BlockRegistryManager.prototype.getAuthorRegistry = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var now;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        now = Date.now();
-                        if (!(now - this.lastFetched > this.cacheDuration || Object.keys(this.authorRegistry).length === 0)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, this.fetchRegistry()];
-                    case 1:
-                        _a.sent();
-                        _a.label = 2;
-                    case 2: return [2 /*return*/, this.authorRegistry];
-                }
-            });
-        });
-    };
+    async getAuthorRegistry() {
+        const now = Date.now();
+        // Fetch if cache is stale or empty
+        if (now - this.lastFetched > this.cacheDuration || Object.keys(this.authorRegistry).length === 0) {
+            await this.fetchRegistry();
+        }
+        return this.authorRegistry;
+    }
     /**
      * Get block ID for a component name (global namespace)
      */
-    BlockRegistryManager.prototype.getBlockId = function (componentName) {
-        return __awaiter(this, void 0, void 0, function () {
-            var registry, entry;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getRegistry()];
-                    case 1:
-                        registry = _a.sent();
-                        entry = registry[componentName];
-                        return [2 /*return*/, entry ? entry.blockId : null];
-                }
-            });
-        });
-    };
+    async getBlockId(componentName) {
+        const registry = await this.getRegistry();
+        const entry = registry[componentName];
+        return entry ? entry.blockId : null;
+    }
     /**
      * Get block ID for an author's component
      */
-    BlockRegistryManager.prototype.getAuthorBlockId = function (author, componentName) {
-        return __awaiter(this, void 0, void 0, function () {
-            var authorRegistry, entry;
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0: return [4 /*yield*/, this.getAuthorRegistry()];
-                    case 1:
-                        authorRegistry = _b.sent();
-                        entry = (_a = authorRegistry[author]) === null || _a === void 0 ? void 0 : _a[componentName];
-                        return [2 /*return*/, entry ? entry.blockId : null];
-                }
-            });
-        });
-    };
+    async getAuthorBlockId(author, componentName) {
+        var _a;
+        const authorRegistry = await this.getAuthorRegistry();
+        const entry = (_a = authorRegistry[author]) === null || _a === void 0 ? void 0 : _a[componentName];
+        return entry ? entry.blockId : null;
+    }
     /**
      * Get all available component names
      */
-    BlockRegistryManager.prototype.getAvailableComponents = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var registry;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getRegistry()];
-                    case 1:
-                        registry = _a.sent();
-                        return [2 /*return*/, Object.keys(registry)];
-                }
-            });
-        });
-    };
+    async getAvailableComponents() {
+        const registry = await this.getRegistry();
+        return Object.keys(registry);
+    }
     /**
      * Get component info (global namespace)
      */
-    BlockRegistryManager.prototype.getComponentInfo = function (componentName) {
-        return __awaiter(this, void 0, void 0, function () {
-            var registry;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getRegistry()];
-                    case 1:
-                        registry = _a.sent();
-                        return [2 /*return*/, registry[componentName] || null];
-                }
-            });
-        });
-    };
+    async getComponentInfo(componentName) {
+        const registry = await this.getRegistry();
+        return registry[componentName] || null;
+    }
     /**
      * Get author's component info
      */
-    BlockRegistryManager.prototype.getAuthorComponentInfo = function (author, componentName) {
-        return __awaiter(this, void 0, void 0, function () {
-            var authorRegistry;
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0: return [4 /*yield*/, this.getAuthorRegistry()];
-                    case 1:
-                        authorRegistry = _b.sent();
-                        return [2 /*return*/, ((_a = authorRegistry[author]) === null || _a === void 0 ? void 0 : _a[componentName]) || null];
-                }
-            });
-        });
-    };
+    async getAuthorComponentInfo(author, componentName) {
+        var _a;
+        const authorRegistry = await this.getAuthorRegistry();
+        return ((_a = authorRegistry[author]) === null || _a === void 0 ? void 0 : _a[componentName]) || null;
+    }
     /**
      * Get all components for an author
      */
-    BlockRegistryManager.prototype.getAuthorComponents = function (author) {
-        return __awaiter(this, void 0, void 0, function () {
-            var authorRegistry;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getAuthorRegistry()];
-                    case 1:
-                        authorRegistry = _a.sent();
-                        return [2 /*return*/, authorRegistry[author] || null];
-                }
-            });
-        });
-    };
+    async getAuthorComponents(author) {
+        const authorRegistry = await this.getAuthorRegistry();
+        return authorRegistry[author] || null;
+    }
     /**
      * Get all available authors
      */
-    BlockRegistryManager.prototype.getAvailableAuthors = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var authorRegistry;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getAuthorRegistry()];
-                    case 1:
-                        authorRegistry = _a.sent();
-                        return [2 /*return*/, Object.keys(authorRegistry)];
-                }
-            });
-        });
-    };
+    async getAvailableAuthors() {
+        const authorRegistry = await this.getAuthorRegistry();
+        return Object.keys(authorRegistry);
+    }
     /**
      * Add a component to the local registry (for development)
      */
-    BlockRegistryManager.prototype.addComponent = function (componentName, entry) {
+    addComponent(componentName, entry) {
         this.registry[componentName] = entry;
-    };
+    }
     /**
      * Clear the registry cache
      */
-    BlockRegistryManager.prototype.clearCache = function () {
+    clearCache() {
         this.registry = {};
         this.authorRegistry = {};
         this.lastFetched = 0;
-    };
+    }
     /**
      * Get local registry for debugging
      */
-    BlockRegistryManager.prototype.getLocalRegistry = function () {
-        return __assign({}, this.registry);
-    };
+    getLocalRegistry() {
+        return Object.assign({}, this.registry);
+    }
     /**
      * Get local author registry for debugging
      */
-    BlockRegistryManager.prototype.getLocalAuthorRegistry = function () {
-        return __assign({}, this.authorRegistry);
-    };
-    return BlockRegistryManager;
-}());
+    getLocalAuthorRegistry() {
+        return Object.assign({}, this.authorRegistry);
+    }
+}
 // Global instance
-var blockRegistry = new BlockRegistryManager();
+const blockRegistry = new BlockRegistryManager();
 /**
  * Helper function to create a registry entry
  */
-function createRegistryEntry(blockId, componentName, title, description, options) {
-    if (options === void 0) { options = {}; }
+function createRegistryEntry(blockId, componentName, title, description, options = {}) {
     return {
-        blockId: blockId,
-        componentName: componentName,
-        title: title,
-        description: description,
+        blockId,
+        componentName,
+        title,
+        description,
         version: options.version,
         tags: options.tags,
         lastUpdated: new Date().toISOString()
@@ -4585,46 +4315,31 @@ function createRegistryEntry(blockId, componentName, title, description, options
 /**
  * Factory function to create named block components
  */
-function createNamedBlock(componentName, options) {
-    var _this = this;
-    if (options === void 0) { options = {}; }
-    var NamedBlockComponent = function (componentProps) {
+function createNamedBlock(componentName, options = {}) {
+    const NamedBlockComponent = (componentProps) => {
         var _a, _b, _c;
-        var _d = react.useState(null), blockId = _d[0], setBlockId = _d[1];
-        var _e = react.useState(null), error = _e[0], setError = _e[1];
-        var _f = react.useState(true), isLoading = _f[0], setIsLoading = _f[1];
-        react.useEffect(function () {
-            var loadBlockId = function () { return __awaiter(_this, void 0, void 0, function () {
-                var foundBlockId, _a, _b, _c, err_1;
-                return __generator(this, function (_d) {
-                    switch (_d.label) {
-                        case 0:
-                            _d.trys.push([0, 4, 5, 6]);
-                            setIsLoading(true);
-                            setError(null);
-                            return [4 /*yield*/, blockRegistry.getBlockId(componentName)];
-                        case 1:
-                            foundBlockId = _d.sent();
-                            if (!!foundBlockId) return [3 /*break*/, 3];
-                            _a = Error.bind;
-                            _c = (_b = "Component \"".concat(componentName, "\" not found in registry. Available components: ")).concat;
-                            return [4 /*yield*/, blockRegistry.getAvailableComponents()];
-                        case 2: throw new (_a.apply(Error, [void 0, _c.apply(_b, [(_d.sent()).join(', ')])]))();
-                        case 3:
-                            setBlockId(foundBlockId);
-                            return [3 /*break*/, 6];
-                        case 4:
-                            err_1 = _d.sent();
-                            console.error("\u274C Failed to resolve component \"".concat(componentName, "\":"), err_1);
-                            setError(err_1);
-                            return [3 /*break*/, 6];
-                        case 5:
-                            setIsLoading(false);
-                            return [7 /*endfinally*/];
-                        case 6: return [2 /*return*/];
+        const [blockId, setBlockId] = react.useState(null);
+        const [error, setError] = react.useState(null);
+        const [isLoading, setIsLoading] = react.useState(true);
+        react.useEffect(() => {
+            const loadBlockId = async () => {
+                try {
+                    setIsLoading(true);
+                    setError(null);
+                    const foundBlockId = await blockRegistry.getBlockId(componentName);
+                    if (!foundBlockId) {
+                        throw new Error(`Component "${componentName}" not found in registry. Available components: ${(await blockRegistry.getAvailableComponents()).join(', ')}`);
                     }
-                });
-            }); };
+                    setBlockId(foundBlockId);
+                }
+                catch (err) {
+                    console.error(`❌ Failed to resolve component "${componentName}":`, err);
+                    setError(err);
+                }
+                finally {
+                    setIsLoading(false);
+                }
+            };
             loadBlockId();
         }, [componentName]);
         // Show loading state while resolving component name
@@ -4648,141 +4363,164 @@ function createNamedBlock(componentName, options) {
                     }, children: [jsxRuntime.jsx("div", { style: { fontWeight: 'bold', marginBottom: '0.5rem' }, children: "\u274C Component not found" }), jsxRuntime.jsxs("div", { style: { fontSize: '0.875rem' }, children: ["Component: ", componentName] }), jsxRuntime.jsxs("div", { style: { fontSize: '0.875rem', marginTop: '0.25rem' }, children: ["Error: ", (error === null || error === void 0 ? void 0 : error.message) || 'Unknown error'] })] }) }));
         }
         // Determine if props validation should be enabled
-        var shouldValidateProps = (_c = (_b = (_a = componentProps.validateProps) !== null && _a !== void 0 ? _a : options.validateProps) !== null && _b !== void 0 ? _b : options.enableTypedProps) !== null && _c !== void 0 ? _c : false;
+        const shouldValidateProps = (_c = (_b = (_a = componentProps.validateProps) !== null && _a !== void 0 ? _a : options.validateProps) !== null && _b !== void 0 ? _b : options.enableTypedProps) !== null && _c !== void 0 ? _c : false;
         // Render the actual Block component with resolved blockId
         return (jsxRuntime.jsx(Block, { blockId: blockId, props: componentProps.props, onLoad: componentProps.onLoad, onError: componentProps.onError, fallback: componentProps.fallback, className: componentProps.className, style: componentProps.style, validateProps: shouldValidateProps }));
     };
     // Set display name for debugging
-    NamedBlockComponent.displayName = "NamedBlock(".concat(componentName, ")");
+    NamedBlockComponent.displayName = `NamedBlock(${componentName})`;
     return NamedBlockComponent;
 }
 /**
  * Factory function to create strongly typed named block components
  * Uses the props schema from the server to provide proper TypeScript types
  */
-function createTypedBlock(componentName, options) {
-    if (options === void 0) { options = {}; }
-    var TypedBlockComponent = function (componentProps) {
+function createTypedBlock(componentName, options = {}) {
+    const TypedBlockComponent = (componentProps) => {
         var _a;
         // Create the named block with validation enabled by default for typed blocks
-        var NamedBlock = createNamedBlock(componentName, {
+        const NamedBlock = createNamedBlock(componentName, {
             validateProps: (_a = options.validateProps) !== null && _a !== void 0 ? _a : true,
             enableTypedProps: true
         });
         // Merge with default props if provided
-        var mergedProps = options.defaultProps
-            ? __assign(__assign({}, options.defaultProps), componentProps.props) : componentProps.props;
-        return (jsxRuntime.jsx(NamedBlock, __assign({}, componentProps, { props: mergedProps })));
+        const mergedProps = options.defaultProps
+            ? Object.assign(Object.assign({}, options.defaultProps), componentProps.props) : componentProps.props;
+        return (jsxRuntime.jsx(NamedBlock, Object.assign({}, componentProps, { props: mergedProps })));
     };
-    TypedBlockComponent.displayName = "TypedBlock(".concat(componentName, ")");
+    TypedBlockComponent.displayName = `TypedBlock(${componentName})`;
     return TypedBlockComponent;
 }
 /**
  * Higher-order component for creating named blocks with additional metadata
  */
-function withBlockMetadata(componentName, metadata) {
-    if (metadata === void 0) { metadata = {}; }
+function withBlockMetadata(componentName, metadata = {}) {
     return function (Component) {
-        var WithMetadata = function (props) {
-            var mergedProps = __assign(__assign({}, metadata.defaultProps), props);
-            return jsxRuntime.jsx(Component, __assign({}, mergedProps));
+        const WithMetadata = (props) => {
+            const mergedProps = Object.assign(Object.assign({}, metadata.defaultProps), props);
+            return jsxRuntime.jsx(Component, Object.assign({}, mergedProps));
         };
-        WithMetadata.displayName = metadata.displayName || "WithBlockMetadata(".concat(componentName, ")");
+        WithMetadata.displayName = metadata.displayName || `WithBlockMetadata(${componentName})`;
         return WithMetadata;
     };
 }
+
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise, SuppressedError, Symbol, Iterator */
+
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+    var e = new Error(message);
+    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
 
 /**
  * AuthorBlock component that loads components from specific authors
  * Usage: <AuthorBlock author="johnsmith" component="Chart" data={chartData} />
  */
-var AuthorBlock = function (_a) {
-    var author = _a.author, component = _a.component, props = __rest(_a, ["author", "component"]);
-    var _b = react.useState(null), BlockComponent = _b[0], setBlockComponent = _b[1];
-    var _c = react.useState(true), loading = _c[0], setLoading = _c[1];
-    var _d = react.useState(null), error = _d[0], setError = _d[1];
-    var _e = react.useState(null), metadata = _e[0], setMetadata = _e[1];
-    react.useEffect(function () {
-        var isMounted = true;
-        var loadAuthorComponent = function () { return __awaiter(void 0, void 0, void 0, function () {
-            var blockId, module, mountFunction_1, WrapperComponent_1, blockMetadata, err_1;
+const AuthorBlock = (_a) => {
+    var { author, component } = _a, props = __rest(_a, ["author", "component"]);
+    const [BlockComponent, setBlockComponent] = react.useState(null);
+    const [loading, setLoading] = react.useState(true);
+    const [error, setError] = react.useState(null);
+    const [metadata, setMetadata] = react.useState(null);
+    react.useEffect(() => {
+        let isMounted = true;
+        const loadAuthorComponent = async () => {
             var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _b.trys.push([0, 4, 5, 6]);
-                        setLoading(true);
-                        setError(null);
-                        console.log("\uD83D\uDD04 Loading component ".concat(author, "/").concat(component, "..."));
-                        return [4 /*yield*/, blockRegistry.getAuthorBlockId(author, component)];
-                    case 1:
-                        blockId = _b.sent();
-                        if (!blockId) {
-                            throw new Error("Component \"".concat(component, "\" not found for author \"").concat(author, "\""));
-                        }
-                        console.log("\uD83D\uDCE6 Found block ID: ".concat(blockId, " for ").concat(author, "/").concat(component));
-                        return [4 /*yield*/, federationLoader.loadModule(blockId)];
-                    case 2:
-                        module = _b.sent();
-                        if (!isMounted)
-                            return [2 /*return*/];
-                        mountFunction_1 = module.mount || ((_a = module.default) === null || _a === void 0 ? void 0 : _a.mount);
-                        if (!mountFunction_1 || typeof mountFunction_1 !== 'function') {
-                            throw new Error("Block ".concat(blockId, " does not export a mount function"));
-                        }
-                        WrapperComponent_1 = function (wrapperProps) {
-                            var containerRef = react.useRef(null);
-                            var cleanupRef = react.useRef(null);
-                            react.useEffect(function () {
-                                if (containerRef.current) {
-                                    console.log("\uD83D\uDD04 Mounting ".concat(author, "/").concat(component, " with props:"), wrapperProps);
-                                    try {
-                                        var cleanup = mountFunction_1(containerRef.current, wrapperProps);
-                                        if (typeof cleanup === 'function') {
-                                            cleanupRef.current = cleanup;
-                                        }
-                                        console.log("\u2705 Successfully mounted ".concat(author, "/").concat(component));
-                                    }
-                                    catch (err) {
-                                        console.error("\u274C Failed to mount ".concat(author, "/").concat(component, ":"), err);
-                                    }
-                                }
-                                return function () {
-                                    if (cleanupRef.current) {
-                                        console.log("\uD83E\uDDF9 Cleaning up ".concat(author, "/").concat(component));
-                                        cleanupRef.current();
-                                        cleanupRef.current = null;
-                                    }
-                                };
-                            }, [wrapperProps]);
-                            return jsxRuntime.jsx("div", { ref: containerRef, className: "mext-federation-container" });
-                        };
-                        WrapperComponent_1.displayName = "FederatedComponent(".concat(author, "/").concat(component, ")");
-                        return [4 /*yield*/, federationLoader.getBlockMetadata(blockId)];
-                    case 3:
-                        blockMetadata = _b.sent();
-                        setBlockComponent(function () { return WrapperComponent_1; });
-                        setMetadata(blockMetadata);
-                        console.log("\u2705 Successfully loaded ".concat(author, "/").concat(component));
-                        return [3 /*break*/, 6];
-                    case 4:
-                        err_1 = _b.sent();
-                        console.error("\u274C Failed to load ".concat(author, "/").concat(component, ":"), err_1);
-                        if (isMounted) {
-                            setError(err_1.message || 'Failed to load component');
-                        }
-                        return [3 /*break*/, 6];
-                    case 5:
-                        if (isMounted) {
-                            setLoading(false);
-                        }
-                        return [7 /*endfinally*/];
-                    case 6: return [2 /*return*/];
+            try {
+                setLoading(true);
+                setError(null);
+                console.log(`🔄 Loading component ${author}/${component}...`);
+                // Get block ID for the author's component
+                const blockId = await blockRegistry.getAuthorBlockId(author, component);
+                if (!blockId) {
+                    throw new Error(`Component "${component}" not found for author "${author}"`);
                 }
-            });
-        }); };
+                console.log(`📦 Found block ID: ${blockId} for ${author}/${component}`);
+                // Load the federated module
+                const module = await federationLoader.loadModule(blockId);
+                if (!isMounted)
+                    return;
+                // Get the mount function
+                const mountFunction = module.mount || ((_a = module.default) === null || _a === void 0 ? void 0 : _a.mount);
+                if (!mountFunction || typeof mountFunction !== 'function') {
+                    throw new Error(`Block ${blockId} does not export a mount function`);
+                }
+                // Create a React wrapper component for the mount function
+                const WrapperComponent = (wrapperProps) => {
+                    const containerRef = react.useRef(null);
+                    const cleanupRef = react.useRef(null);
+                    react.useEffect(() => {
+                        if (containerRef.current) {
+                            console.log(`🔄 Mounting ${author}/${component} with props:`, wrapperProps);
+                            try {
+                                const cleanup = mountFunction(containerRef.current, wrapperProps);
+                                if (typeof cleanup === 'function') {
+                                    cleanupRef.current = cleanup;
+                                }
+                                console.log(`✅ Successfully mounted ${author}/${component}`);
+                            }
+                            catch (err) {
+                                console.error(`❌ Failed to mount ${author}/${component}:`, err);
+                            }
+                        }
+                        return () => {
+                            if (cleanupRef.current) {
+                                console.log(`🧹 Cleaning up ${author}/${component}`);
+                                cleanupRef.current();
+                                cleanupRef.current = null;
+                            }
+                        };
+                    }, [wrapperProps]);
+                    return jsxRuntime.jsx("div", { ref: containerRef, className: "mext-federation-container" });
+                };
+                WrapperComponent.displayName = `FederatedComponent(${author}/${component})`;
+                // Get metadata for debugging
+                const blockMetadata = await federationLoader.getBlockMetadata(blockId);
+                setBlockComponent(() => WrapperComponent);
+                setMetadata(blockMetadata);
+                console.log(`✅ Successfully loaded ${author}/${component}`);
+            }
+            catch (err) {
+                console.error(`❌ Failed to load ${author}/${component}:`, err);
+                if (isMounted) {
+                    setError(err.message || 'Failed to load component');
+                }
+            }
+            finally {
+                if (isMounted) {
+                    setLoading(false);
+                }
+            }
+        };
         loadAuthorComponent();
-        return function () {
+        return () => {
             isMounted = false;
         };
     }, [author, component]);
@@ -4819,47 +4557,36 @@ var AuthorBlock = function (_a) {
                 padding: '20px',
                 textAlign: 'center',
                 color: '#666'
-            }, children: ["Initializing ", author, "/", component, "..."] }), children: jsxRuntime.jsxs("div", { className: "mext-author-block", "data-author": author, "data-component": component, children: [jsxRuntime.jsx(BlockComponent, __assign({}, props)), metadata && (jsxRuntime.jsx("div", { className: "mext-block-metadata", style: { display: 'none' }, children: JSON.stringify(metadata) }))] }) }));
+            }, children: ["Initializing ", author, "/", component, "..."] }), children: jsxRuntime.jsxs("div", { className: "mext-author-block", "data-author": author, "data-component": component, children: [jsxRuntime.jsx(BlockComponent, Object.assign({}, props)), metadata && (jsxRuntime.jsx("div", { className: "mext-block-metadata", style: { display: 'none' }, children: JSON.stringify(metadata) }))] }) }));
 };
 /**
  * Create a typed author block component
  */
 function createAuthorBlock(author, component) {
-    var AuthorBlockComponent = function (props) { return (jsxRuntime.jsx(AuthorBlock, __assign({ author: author, component: component }, props))); };
-    AuthorBlockComponent.displayName = "AuthorBlock(".concat(author, "/").concat(component, ")");
+    const AuthorBlockComponent = (props) => (jsxRuntime.jsx(AuthorBlock, Object.assign({ author: author, component: component }, props)));
+    AuthorBlockComponent.displayName = `AuthorBlock(${author}/${component})`;
     return AuthorBlockComponent;
 }
 /**
  * Create author namespace object with all components
  */
-function createAuthorNamespace(author) {
-    return __awaiter(this, void 0, void 0, function () {
-        var components, namespace, _i, _a, componentName, error_1;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    _b.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, blockRegistry.getAuthorComponents(author)];
-                case 1:
-                    components = _b.sent();
-                    if (!components) {
-                        console.warn("No components found for author: ".concat(author));
-                        return [2 /*return*/, {}];
-                    }
-                    namespace = {};
-                    for (_i = 0, _a = Object.entries(components); _i < _a.length; _i++) {
-                        componentName = _a[_i][0];
-                        namespace[componentName] = createAuthorBlock(author, componentName);
-                    }
-                    return [2 /*return*/, namespace];
-                case 2:
-                    error_1 = _b.sent();
-                    console.error("Failed to create author namespace for ".concat(author, ":"), error_1);
-                    return [2 /*return*/, {}];
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
+async function createAuthorNamespace(author) {
+    try {
+        const components = await blockRegistry.getAuthorComponents(author);
+        if (!components) {
+            console.warn(`No components found for author: ${author}`);
+            return {};
+        }
+        const namespace = {};
+        for (const [componentName] of Object.entries(components)) {
+            namespace[componentName] = createAuthorBlock(author, componentName);
+        }
+        return namespace;
+    }
+    catch (error) {
+        console.error(`Failed to create author namespace for ${author}:`, error);
+        return {};
+    }
 }
 
 /**
@@ -4872,7 +4599,7 @@ function configure(config) {
     }
     if (config.enableLogging !== undefined) {
         // Future: control logging level
-        console.log("\uD83D\uDD27 MEXT Block logging ".concat(config.enableLogging ? 'enabled' : 'disabled'));
+        console.log(`🔧 MEXT Block logging ${config.enableLogging ? 'enabled' : 'disabled'}`);
     }
     console.log('🔧 MEXT Block configured:', config);
 }
@@ -4896,40 +4623,40 @@ createNamedBlock('AnalyticsDashboard');
 
 // Main Block component
 // Virtual Game component example
-var VirtualGame = createNamedBlock('VirtualGame');
+const VirtualGame = createNamedBlock('VirtualGame');
 // 3D Scene component example  
-var ThreeScene = createNamedBlock('ThreeScene');
+const ThreeScene = createNamedBlock('ThreeScene');
 // Chart component example
-var Chart = createNamedBlock('Chart');
+const Chart = createNamedBlock('Chart');
 // Form component example
-var Form = createNamedBlock('Form');
+const Form = createNamedBlock('Form');
 // Video Player component example
-var VideoPlayer = createNamedBlock('VideoPlayer');
+const VideoPlayer = createNamedBlock('VideoPlayer');
 // Code Editor component example
-var CodeEditor = createNamedBlock('CodeEditor');
+const CodeEditor = createNamedBlock('CodeEditor');
 // Image Gallery component example
-var ImageGallery = createNamedBlock('ImageGallery');
+const ImageGallery = createNamedBlock('ImageGallery');
 // Analytics Dashboard component example
-var AnalyticsDashboard = createNamedBlock('AnalyticsDashboard');
+const AnalyticsDashboard = createNamedBlock('AnalyticsDashboard');
 // Note: In production, these named exports would be generated automatically
 // by the mexty based on the registry from the server
 // Re-export everything as default for convenience
-var MextBlock = {
+const MextBlock = {
     Block: Block,
-    VirtualGame: VirtualGame,
-    ThreeScene: ThreeScene,
-    Chart: Chart,
-    Form: Form,
-    VideoPlayer: VideoPlayer,
-    CodeEditor: CodeEditor,
-    ImageGallery: ImageGallery,
-    AnalyticsDashboard: AnalyticsDashboard,
-    createNamedBlock: createNamedBlock,
-    createTypedBlock: createTypedBlock,
-    withBlockMetadata: withBlockMetadata,
-    blockRegistry: blockRegistry,
-    federationLoader: federationLoader,
-    configure: configure
+    VirtualGame,
+    ThreeScene,
+    Chart,
+    Form,
+    VideoPlayer,
+    CodeEditor,
+    ImageGallery,
+    AnalyticsDashboard,
+    createNamedBlock,
+    createTypedBlock,
+    withBlockMetadata,
+    blockRegistry,
+    federationLoader,
+    configure
 };
 
 exports.AnalyticsDashboard = AnalyticsDashboard;

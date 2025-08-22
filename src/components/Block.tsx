@@ -13,7 +13,7 @@ export interface BlockProps {
   // Enable type checking for props
   validateProps?: boolean;
   // Data attribute for block identification
-  'data-mexty-id'?: string;
+  dataMextyId?: string;
 }
 
 interface BlockPropsSchema {
@@ -42,7 +42,7 @@ const Block: React.FC<BlockProps> = ({
   className,
   style,
   validateProps = false,
-  'data-mexty-id': dataMextyId
+  dataMextyId
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);

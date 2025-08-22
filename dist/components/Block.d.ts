@@ -8,6 +8,7 @@ export interface BlockProps {
     className?: string;
     style?: React.CSSProperties;
     validateProps?: boolean;
+    'data-mexty-id'?: string;
 }
 declare const Block: React.FC<BlockProps>;
 export default Block;
