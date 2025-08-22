@@ -233,7 +233,6 @@ const Block: React.FC<BlockProps> = ({
               <div 
                 ref={mountRef} 
                 style={{ width: '100%', height: '100%' }}
-                data-mexty-id={dataMextyId}
               />
             );
           };

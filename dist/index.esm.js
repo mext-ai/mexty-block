@@ -3922,7 +3922,7 @@ class FederationLoader {
 // Global instance
 const federationLoader = new FederationLoader();
 
-const Block = ({ blockId, props: blockProps, onLoad, onError, fallback, className, style, validateProps = false, 'data-mexty-id': dataMextyId }) => {
+const Block = ({ blockId, props: blockProps, onLoad, onError, fallback, className, style, validateProps = false, dataMextyId }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [MountedComponent, setMountedComponent] = useState(null);

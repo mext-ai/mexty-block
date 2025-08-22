@@ -178,7 +178,7 @@ interface BlockProps {
     className?: string;
     style?: react__default.CSSProperties;
     validateProps?: boolean;
-    'data-mexty-id'?: string;
+    dataMextyId?: string;
 }
 declare const Block: react__default.FC<BlockProps>;
 
